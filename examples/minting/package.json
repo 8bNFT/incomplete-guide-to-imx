@@ -1,0 +1,17 @@
+{
+  "name": "imx-mint-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@imtbl/imx-sdk": "^1.1.1",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "mintv1": "node index.mjs",
+    "mintv2": "node index.v2.mjs"
+  },
+  "author": "8ball",
+  "license": "ISC"
+}
