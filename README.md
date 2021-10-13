@@ -133,6 +133,11 @@ https://example.com/bunny/ducks/123
 - https://example.com/bunny/ducks is the \<base_uri\>
 - 123 is still the \<tokenId\>
 
+Example #3
+https://gateway.pinata.cloud/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF/123
+- https://gateway.pinata.cloud/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF is the \<base_uri\>
+- 123 is still the \<tokenId\>
+
 #### ALL contracts must first be registered with IMX before you're able to deposit or mint assets based on them (link to registration)
 
 # Metadata
