@@ -10,7 +10,7 @@ import "./IMXMethods.sol";
 contract NFT is ERC721, IMXMethods {
     // Optional - used for L1-level late reveals, a static string can be used instead (check below)
     string public baseTokenURI;
-    // blueprints storage, use only if you're not storing on-chain metadata comment this line
+    // blueprints storage, if you're not storing on-chain metadata comment this line
     mapping(uint256 => bytes) public metadata;
 
     // constructor which gets called on contract's deployment
