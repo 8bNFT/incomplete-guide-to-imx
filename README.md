@@ -78,9 +78,10 @@ All you have to do is register your contract with IMX and provide relevant infor
 
 ### I want to adapt my L1-deployed contract to allow L2 minting
 Your contract needs to implement Mintable interface (**IMintable**), which can be done via a proxy contract and has to be registered on L2.
+You also need to have a contract owner method, this is basically the standard and an example implementation is [OpenZeppelin's Ownable](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol).
 
 ### I have an L1 contract which is not yet deployed, how do I adapt it to allow L2 minting
-Same as the question above, you need to implement **IMintable** and register your contract on L2.
+Same as the question above, you need to implement **IMintable** and owner() and register your contract on L2.
 Also, depending on the complexity of your project and whether you want to allow native L1 minting, you'll probably want to remove the (public payable) mint function usually used for on-site minting.
 
 ## Registration Requirements
@@ -100,6 +101,16 @@ Assets minted on L2 do not exist in their "full" form.
 Your L2 minted ERC721/ERC20 token will not be visible as such on L1 until its first withdrawal, it will - however - have its [L1 representation, immutability and cryptographic security](https://docs.x.immutable.com/docs/developer-faq#nfts) from the moment you mint it. Example implementation jump link.
 
 You may think of this function as a **wrapper around ERC721's _safeMint()**, with the added benefit of being able to store on-chain metadata through blueprints.
+
+### Ownable
+In order for IMX to verify the contract's owner which is used to allow access to the IMintable implementation, your contract needs to have an owner.
+An example implementation is [OpenZeppelin's Ownable](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol).
+
+What's really required is
+    owner()
+
+Which returns an address of the owner. If you don't want to use OpenZeppelin's Ownable, you may implement this yourself.
+Address returned from that method is the one you must be able to sign minting requests with.
 
 ### Metadata
 Immutable X recognizes two (2) types of metadata: **mutable** and **immutable**.
@@ -133,9 +144,10 @@ https://example.com/bunny/ducks/123
 - https://example.com/bunny/ducks is the \<base_uri\>
 - 123 is still the \<tokenId\>
 
-Example #3
+Example #3 (IPFS) - Using IPFS is allowed, but you need to have an HTTP gateway for IMX to fetch files from (below example is using Cloudflare's IPFS gateway)
 http://cloudflare-ipfs.com/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF/123
 - http://cloudflare-ipfs.com/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF is the \<base_uri\>
+- QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF is your IPFS hash/cid
 - 123 is still the \<tokenId\>
 
 (Note: You can still use IPFS to host your metadata, but you will need to provide an HTTP gateway URL, instead of a raw ipfs:// one)

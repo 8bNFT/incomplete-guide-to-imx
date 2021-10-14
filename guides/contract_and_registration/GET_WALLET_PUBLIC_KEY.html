@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Get Public Key</title>
+</head>
+
+<body>
+   <div style="margin-bottom:5px">Enable Metamask, the click on the sign button and sign with your wallet to get your public key</div>
+   <div style="margin-bottom:5px"><button onclick="enableMM()">Enable Metamask</button></div>
+   <div style="margin-bottom:20px"><button onclick="findPublicKey()">Sign</button></div>
+   <div>Public key: <span id="public-key"></span></div>
+   <script src="https://cdn.jsdelivr.net/npm/ethers@5.4.7/dist/ethers.umd.min.js" type="application/javascript"></script>
+   <script>
+
+      function enableMM() {
+         window.ethereum.send('eth_requestAccounts');
+      }
+
+      async function findPublicKey() {
+         const provider = new ethers.providers.Web3Provider(window.ethereum);
+         const signer = provider.getSigner();
+         const message = 'Get Public Key';
+         const signature = await signer.signMessage(message);
+         const digest = ethers.utils.arrayify(ethers.utils.hashMessage(message));
+         const publicKey = await ethers.utils.recoverPublicKey(digest, signature);
+         const address = await ethers.utils.recoverAddress(digest, signature);
+
+         document.getElementById("public-key").innerHTML = "" + publicKey;
+      };
+
+   </script>
+</body>
+</html>

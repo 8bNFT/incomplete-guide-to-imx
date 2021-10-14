@@ -81,8 +81,6 @@ const main = async()=>{
         const result = await client.mintV2([
             {
                 "contractAddress": process.env.TOKEN_CONTRACT_ADDRESS.toLowerCase(),
-                "authSignature": "",
-                nonce: '' + Math.floor(Math.random() * 10000),
                 // top-level "global" royalties that apply to this entire call
                 // unless overriden on a token-by-token basis in the below array
                 "royalties": [
@@ -104,7 +102,7 @@ const main = async()=>{
                             // you can add multiple tokens (of the same type and from the same contract!)
                             {
                                 // ID of the token (received as the 2nd argument in mintFor), positive integer string
-                                "id": "279",
+                                "id": "292",
                                 // blueprint - can't be left empty, but if you're not going to take advantage
                                 // of on-chain metadata, just keep it to a minimum - in this case a single character
                                 // gets passed as the 3rd argument formed as {tokenId}:{blueprint (whatever you decide to put in it when calling this function)}
