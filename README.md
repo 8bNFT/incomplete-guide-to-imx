@@ -134,9 +134,10 @@ https://example.com/bunny/ducks/123
 - 123 is still the \<tokenId\>
 
 Example #3
-https://gateway.pinata.cloud/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF/123
-- https://gateway.pinata.cloud/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF is the \<base_uri\>
+http://cloudflare-ipfs.com/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF/123
+- http://cloudflare-ipfs.com/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF is the \<base_uri\>
 - 123 is still the \<tokenId\>
+(Note: You can still use IPFS to host your metadata, but you will need to provide an HTTP gateway URL, instead of a raw ipfs:// one)
 
 #### ALL contracts must first be registered with IMX before you're able to deposit or mint assets based on them (link to registration)
 
