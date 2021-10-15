@@ -1,6 +1,9 @@
 const hardhat = require('hardhat');
 const { ethers } = hardhat;
 
+// A really weird whatever function that should read from REGISTRATION_DETAILS and be less weird
+// Just an example I guess (for now)
+
 async function main() {
     const [owner] = await ethers.getSigners();
   

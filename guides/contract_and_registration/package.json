@@ -7,6 +7,8 @@
     "compile": "npx hardhat compile",
     "deploy:testnet": "npx hardhat run deploy/simple_asset.js --network ropsten",
     "deploy:mainnet": "npx hardhat run deploy/simple_asset.js --network mainnet",
+    "deploy:local": "npx hardhat run deploy/simple_asset.js",
+    "setURI:testnet": "npx hardhat run deploy/set_token.js --network ropste",
     "test": "npx hardhat test"
   },
   "dependencies": {
