@@ -68,7 +68,11 @@ Yup. That should be it. Now whether it worked or not is a story for another day.
 If there were any errors, they will be descriptive and shown in the terminal.
 
 ### mintv2
+
 Mintv2 is a replacement for mintv1 that's supposed to be taking its place in the near future. It focuses on minting **a single token type to multiple users**. I do find this approach to make much more sense, considering this scenario is much more likely (think - literally every NFT drop ever). Mintv2 also adds the ability to add protocol-level royalties and even define them on **token by token** basis.
+
+#### Minting with royalties is currently not LIVE. It is only available for testing on testnet (Ropsten)
+However, projects minted **will be able to additionally add royalties** to their assets. Process is TBA (to be announced).
 
 If you want to run the mintv2 script, just enter the following in your terminal/command prompt
 

@@ -201,49 +201,74 @@ The following five (5) types are allowed:
 - **enum** - property with a set of possible (end) values (think a list of values which can be the *only* thing matching this key, eg. sex: [male, female, other])
 - **text** - arbitrary text, searchable
 - **boolean** - true/false (think checkbox)
-- **continuous** - property handled as a range (slider?), height
+- **continuous** - property handled as a range (continous numeric value), (think height)
 - **discrete** - proprety which will be handled as a multi-select, mana?
+
+The basic JSON schema definition looks like
+
+    {
+        "metadata": [
+            {
+                "name": <NAME OF THE KEY>, // name of the top-level key defined in your schema
+                "type": <ONE OF THE 5 ALLOWED TYPES>, // check the above definition of types
+                "filterable": <boolean(true/false)> // defines whether or not your assets should be filterable by this key
+            }
+        ]
+    }
 
 #### Example #1
 
 **JSON Schema (mapping)** - Needed for contract registration!
 
-    [
-        {
-            "key": "name",
-            "type": "text"
-        },
-        {
-            "key": "description",
-            "type": "text"
-        },
-        {
-            "key": "image_url",
-            "type": "text"
-        },
-        {
-            "key": "magical",
-            "type": "boolean"
-        },
-        {
-            "key": "origin",
-            "value": [
-                "forest",
-                "sky",
-                "vulcano",
-                "ocean"
-            ],
-            "type": "enum"
-        },
-        {
-            "key": "power_level",
-            "type": "discrete",
-            "range": {
-                "min": 0,
-                "max": 100
+    {
+        "metadata": [
+            {
+                "name": "name",
+                "type": "text",
+                "filterable": true
+            },
+            {
+                "name": "description",
+                "type": "text",
+                "filterable": false
+            },
+            {
+                "name": "image_url",
+                "type": "text",
+                "filterable": false
+            },
+            {
+                "name": "magical",
+                "type": boolean,
+                "filterable": true
+            },
+            {
+                "name": "origin",
+                "type": "enum",
+                "value": [
+                    "forest",
+                    "sky",
+                    "vulcano",
+                    "ocean"
+                ],
+                "filterable": true
+            },
+            {
+                "name": "age",
+                "type": "discrete",
+                "filterable": false
+            },
+            {
+                "name": "power_level",
+                "type": "discrete",
+                "range": {
+                    "min": 0,
+                    "max": 100
+                },
+                "filterable": false
             }
-        }
-    ]
+        ]
+    }
 
 
 **Metadata for Creature #1 matching the above mapping**
@@ -254,6 +279,7 @@ The following five (5) types are allowed:
 	    "image_url": "https://..../",
 	    "magical": true, // boolean - either true or false
 	    "origin": "vulcano", // has to be one of the four defined (forest, sky, vulcano, ocean)
+        "age": 120, // numeric value to be used as continous
 	    "power_level": 98 // value between 0 and 100
     }
 
@@ -263,5 +289,6 @@ However, I do want to point out some major mistakes or changes in understanding,
 
 | Commit date (DD/MM) | Change reason |
 |--|--|
+| 15/10/2021 | Updated JSON schema structure according to the [new docs](https://docs.x.immutable.com/docs/asset-metadata) |
 |12/10/2021|Better formatting. Additional JSON properties might not be ignored (might cause issues) - have yet to find an official statement and do proper testing.|
 | 11/10/2021 | Initial commit |
