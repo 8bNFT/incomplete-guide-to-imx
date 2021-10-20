@@ -33,21 +33,21 @@ abstract contract IMXMethods is Ownable, IMintable {
     function mintFor(
         // address of the receiving user's wallet (must be IMX registered)
         address user,
-        // id of the token that's getting mint
-        uint256 id,
+        // number of tokens that are getting mint, must be 1 for ERC721
+        uint256 quantity,
         // blueprint blob, formatted as {tokenId}:{blueprint}
         // blueprint gets passed on L2 mint-time
         bytes calldata mintingBlob
     ) external override {
+        // quantity MUST be 1 for ERC721 token type
+        require(quantity == 1, "Invalid quantity");
         // whitelisting the IMX Smart Contract address
         // this makes sure that you don't accidentally call the function, which could result in clashing token IDs
         require(msg.sender == imx, "Function can only be called by IMX");
-        // parsing of the blueprint as implemented by IMX, splits the {tokenId}:{blueprint} into [_bid, blueprint]
-        // if you're not using on-chain metadata, comment this line out to save some bytes
-        (uint256 _bid, bytes memory blueprint) = Parsing.split(mintingBlob);
+        // parsing of the blueprint as implemented by IMX, splits the {tokenId}:{blueprint} into [id, blueprint]
+        (uint256 id, bytes memory blueprint) = Parsing.split(mintingBlob);
         // passing the user, id as well as the parsed blueprint to a child-implemented _mintFor method
         // child's implementation should (at the very least) call ERC721's _safeMint(user, id)
-        // if you're not storing on-chain metadata, make sure to pass an empty string as the blueprint or change this function's signature
         _mintFor(user, id, blueprint);
         // emiting the AssetMinted event
         // if you don't need this event, comment it out

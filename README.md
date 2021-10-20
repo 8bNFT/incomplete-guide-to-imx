@@ -90,11 +90,11 @@ Also, depending on the complexity of your project and whether you want to allow 
 In order for you contract to be "mintable" it needs to implement the Mintable interface.
 Luckily, IMintable only defines a single function with the following signature
 
-    function  mintFor(address  to,  uint256  id,  bytes  blueprint);
+    function  mintFor(address  to,  uint256  quantity,  bytes  blueprint);
 Where 
 - **to** - receivers address
-- **id** - token's ID to be minted
-- **blueprint** - immutable on-chain metadata defined on mint time, sent trustlessly
+- **quantity** - amount of tokens to be mint, must be 1 for ERC721
+- **blueprint** - immutable on-chain metadata defined on mint time, sent trustlessly, format: {tokenId}:{blueprint}
 
 This function **gets called upon successful (first) withdrawal from L2 to L1.** 
 Assets minted on L2 do not exist in their "full" form. 

@@ -16,7 +16,7 @@ describe("NFT Tests", function () {
     const blueprint = '1000';
     const blob = toHex(`{${tokenID}}:{${blueprint}}`);
 
-    await expect(mintable.mintFor(owner.address, tokenID, blob)).to.be.reverted;
+    await expect(mintable.mintFor(owner.address, 1, blob)).to.be.reverted;
   });
 
   it("Should be owned by the deployer", async function () {
@@ -49,7 +49,7 @@ describe("NFT Tests", function () {
     const blueprint = '1000';
     const blob = toHex(`{${tokenID}}:{${blueprint}}`);
 
-    await mintable.mintFor(owner.address, tokenID, blob);
+    await mintable.mintFor(owner.address, 1, blob);
 
     const oo = await mintable.ownerOf(tokenID);
 
@@ -76,11 +76,27 @@ describe("NFT Tests", function () {
     const blueprint = '';
     const blob = toHex(`{${tokenID}}:{${blueprint}}`);
 
-    await mintable.mintFor(owner.address, tokenID, blob);
+    await mintable.mintFor(owner.address, 1, blob);
 
     const bp = await mintable.metadata(tokenID);
 
     expect(fromHex(bp)).to.equal(blueprint);
+
+  });
+
+  it("Should not be able to mint more than a single ERC721 token", async function () {
+   
+    const [owner] = await ethers.getSigners();
+
+    const Asset = await ethers.getContractFactory("NFT");
+
+    const name = 'IMX NFT';
+    const symbol = 'IMXNFT';
+    const imx = owner.address;
+    const mintable = await Asset.deploy(name, symbol, imx);
+
+    const blob = toHex(`${123}:0x`);
+    await expect(mintable.mintFor(owner.address, 10, blob)).to.be.reverted;
 
   });
 

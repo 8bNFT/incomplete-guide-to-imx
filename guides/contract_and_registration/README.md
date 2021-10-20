@@ -1,4 +1,7 @@
-# DOCUMENTATION TO BE DONE! WORK IN PROGRESS
+# Correct function signature for mintFor is (address to, uint256 quantity, bytes calldata blueprint)
+## Examples and tests have been updated in order to reflect this
+
+## DOCUMENTATION TO BE DONE! WORK IN PROGRESS
 ### To get a better understanding of contract, read through the contract. Plenty of comments in there.
 
 # Step 1 - Dependencies 
