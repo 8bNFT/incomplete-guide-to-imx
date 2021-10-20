@@ -2,16 +2,21 @@
 There were some uncertainties when it comes to the mintFor method defined by the IMintable. Official documentation and implementation were different. I have followed official documentation, which has been out of date at the time of writing the initial version of this contract.
 
 **Changes (20/10/2021 - DD/MM/YYYY)**
-Correct function signature for mintFor is (address to, uint256 quantity, bytes calldata mintingBlob) as opposed to (address to, uint256 id, bytes calldata blueprint).
+
+Correct function signature for mintFor is **(address to, uint256 quantity, bytes calldata mintingBlob)** as opposed to *(address to, uint256 id, bytes calldata blueprint)*.
 
 This change has been implemented after confirming the correct function signature with IMX devs, and all of my resources have been updated as well - which includes documentation, code and tests. 
 
 If you've used the previous version of this contract or have done the implementation based n the (to, id, blueprint) signature, you will experience issues when withdrawing to the L1.
 
+Quantity is always supposed to be 1 when it comes to ERC721. The same method will be used for ERC20s when the official support is released.
+
 ### DOCUMENTATION TO BE DONE! WORK IN PROGRESS
 To get a better understanding of the contract, read through it. Plenty of comments in there.
 
 **None of the code has been verified or endorsed by members of the IMX team**
+
+**Make sure you test the entire flow on the testnet, before going to the mainnet.** This includes minting, buying, selling, withdrawing and depositing of assets.
 
 # Step 1 - Dependencies 
 After downloading, run the following using Terminal/Command Prompt (requires [NodeJS](https://nodejs.org/en/download/)):
@@ -176,7 +181,7 @@ IMX allows for pure ETH transfers to happen from one party to the other. This me
 
 To do so, instead of making a buy or sell orders, you'd make a transfer from one party (buyer) to the other (yourself). You'd have to verify/poll transfers made to you and mint tokens accordingly. Reversals/rejections of failed mints and payments would have to be handled by you (no gas fees, so you'd just send the money back).
 
-This of this as the "L1 raw transaction" implementation, but done on IMX.
+Think of this as the "L1 raw transaction" implementation, but done on IMX.
 
 Pros
 - closest to the "true" L1 minting dapp experience
