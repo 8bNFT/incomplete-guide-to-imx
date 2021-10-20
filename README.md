@@ -198,11 +198,11 @@ List of core properites (optional, but *recommended*)
 In order to index and allow for filtering of attributes, Immutable X requires a JSON schema to be submitted together with the contract. JSON schema describes the correlation between your metadata properites and their "representable types".
 
 The following five (5) types are allowed:
-- **enum** - property with a set of possible (end) values (think a list of values which can be the *only* thing matching this key, eg. sex: [male, female, other])
+- **enum** - property with a set of possible (end) values (think a list of values which can be the *only* thing matching this key, eg. sex: [male, female, other]). *The list of potential options will be automatically populated by the Immutable X crawler and is not to be provided in the JSON mapping*
 - **text** - arbitrary text, searchable
 - **boolean** - true/false (think checkbox)
 - **continuous** - property handled as a range (continous numeric value), (think height)
-- **discrete** - proprety which will be handled as a multi-select, mana?
+- **discrete** - proprety which will be handled as a multi-select, (think mana, min-max range)
 
 The basic JSON schema definition looks like
 
@@ -245,12 +245,6 @@ The basic JSON schema definition looks like
             {
                 "name": "origin",
                 "type": "enum",
-                "value": [
-                    "forest",
-                    "sky",
-                    "vulcano",
-                    "ocean"
-                ],
                 "filterable": true
             },
             {
@@ -261,10 +255,6 @@ The basic JSON schema definition looks like
             {
                 "name": "power_level",
                 "type": "discrete",
-                "range": {
-                    "min": 0,
-                    "max": 100
-                },
                 "filterable": false
             }
         ]
@@ -278,9 +268,9 @@ The basic JSON schema definition looks like
 	    "description": "This is a fiery creature and it's the first one!",
 	    "image_url": "https://..../",
 	    "magical": true, // boolean - either true or false
-	    "origin": "vulcano", // has to be one of the four defined (forest, sky, vulcano, ocean)
+	    "origin": "vulcano", // this value  will be added to the enum set by the crawler
         "age": 120, // numeric value to be used as continous
-	    "power_level": 98 // value between 0 and 100
+	    "power_level": 98 // value which will be added to the potential range by the crawler
     }
 
 # Changelogs
@@ -289,6 +279,7 @@ However, I do want to point out some major mistakes or changes in understanding,
 
 | Commit date (DD/MM) | Change reason |
 |--|--|
+| 20/10/2021 | Another update to the JSON schema, removal of predefined values. Update to the contracts and the mintFor method |
 | 15/10/2021 | Updated JSON schema structure according to the [new docs](https://docs.x.immutable.com/docs/asset-metadata) |
 |12/10/2021|Better formatting. Additional JSON properties might not be ignored (might cause issues) - have yet to find an official statement and do proper testing.|
 | 11/10/2021 | Initial commit |
