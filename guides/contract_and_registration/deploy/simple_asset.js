@@ -38,20 +38,20 @@ async function main() {
     const [deployer] = await ethers.getSigners();
 
     const REG_DETAILS = regDetails()
-    REG_DETAILS.NETWORK = hardhat.network.name
-    REG_DETAILS.PUBLIC_KEY = await getPublicKey(deployer)
-    REG_DETAILS.OWNER_ADDRESS = deployer.address
+    REG_DETAILS.network = hardhat.network.name
+    REG_DETAILS.owner_public_key = await getPublicKey(deployer)
+    REG_DETAILS.owner_address = deployer.address
   
-    console.log('Deploying Contracts with the account: ', REG_DETAILS.OWNER_ADDRESS);
-    console.log('Account Public Key', REG_DETAILS.PUBLIC_KEY);
+    console.log('Deploying Contracts with the account: ', REG_DETAILS.owner_address);
+    console.log('Account Public Key', REG_DETAILS.owner_public_key);
     console.log('Account Balance: ', (await deployer.getBalance()).toString());
 
     // Use any logic you want to determine these values
     const name = process.env.CONTRACT_NAME;
-    REG_DETAILS.COLLECTION_NAME = name;
+    REG_DETAILS.name = name;
     const symbol = process.env.CONTRACT_SYMBOL;
 
-    REG_DETAILS.CONTRACT_ADDRESS = await deploySmartContract(name, symbol, hardhat.network.name);
+    REG_DETAILS.contract_address = await deploySmartContract(name, symbol, hardhat.network.name);
 
     console.log("[SUCCESS] Smart Contract deployed successfully.")
     fs.writeFileSync("./REGISTRATION_DETAILS.json", JSON.stringify(REG_DETAILS, null, 4))

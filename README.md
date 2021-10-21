@@ -198,8 +198,8 @@ List of core properites (optional, but *recommended*)
 In order to index and allow for filtering of attributes, Immutable X requires a JSON schema to be submitted together with the contract. JSON schema describes the correlation between your metadata properites and their "representable types".
 
 The following five (5) types are allowed:
+- **text** (default) - arbitrary text, searchable, **cannot be filterable**
 - **enum** - property with a set of possible (end) values (think a list of values which can be the *only* thing matching this key, eg. sex: [male, female, other]). *The list of potential options will be automatically populated by the Immutable X crawler and is not to be provided in the JSON mapping*
-- **text** - arbitrary text, searchable
 - **boolean** - true/false (think checkbox)
 - **continuous** - property handled as a range (continous numeric value), (think height)
 - **discrete** - proprety which will be handled as a multi-select, (think mana, min-max range)
@@ -209,9 +209,9 @@ The basic JSON schema definition looks like
     {
         "metadata": [
             {
-                "name": <NAME OF THE KEY>, // name of the top-level key defined in your schema
-                "type": <ONE OF THE 5 ALLOWED TYPES>, // check the above definition of types
-                "filterable": <boolean(true/false)> // defines whether or not your assets should be filterable by this key
+                "name": <NAME OF THE KEY>, // name of the top-level key defined in your schema (Required)
+                "type": <ONE OF THE 5 ALLOWED TYPES>, // check the above definition of types. (Optional, defaults to "text")
+                "filterable": <boolean(true/false)> // defines whether or not your assets should be filterable by this key. Cannot be used with type "text. (Optional, defaults to false)
             }
         ]
     }
@@ -223,19 +223,13 @@ The basic JSON schema definition looks like
     {
         "metadata": [
             {
-                "name": "name",
-                "type": "text",
-                "filterable": true
+                "name": "name"
             },
             {
                 "name": "description",
-                "type": "text",
-                "filterable": false
             },
             {
                 "name": "image_url",
-                "type": "text",
-                "filterable": false
             },
             {
                 "name": "magical",
@@ -249,13 +243,11 @@ The basic JSON schema definition looks like
             },
             {
                 "name": "age",
-                "type": "discrete",
-                "filterable": false
+                "type": "discrete"
             },
             {
                 "name": "power_level",
-                "type": "discrete",
-                "filterable": false
+                "type": "discrete"
             }
         ]
     }
@@ -279,6 +271,7 @@ However, I do want to point out some major mistakes or changes in understanding,
 
 | Commit date (DD/MM) | Change reason |
 |--|--|
+| 21/10/2021 | Another day, another JSON key goes away |
 | 20/10/2021 | Another update to the JSON schema, removal of predefined values. Update to the contracts and the mintFor method |
 | 15/10/2021 | Updated JSON schema structure according to the [new docs](https://docs.x.immutable.com/docs/asset-metadata) |
 |12/10/2021|Better formatting. Additional JSON properties might not be ignored (might cause issues) - have yet to find an official statement and do proper testing.|

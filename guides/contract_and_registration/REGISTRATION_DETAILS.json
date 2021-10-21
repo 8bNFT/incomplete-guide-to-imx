@@ -1,8 +1,11 @@
 {
-    "NETWORK": "",
-    "COLLECTION_NAME": "",
-    "PUBLIC_KEY": "",
-    "OWNER_ADDRESS": "",
-    "JSON_SCHEMA": "",
-    "CONTRACT_ADDRESS": ""
+    "network": "",
+    "name": "",
+    "description": "",
+    "owner_public_key": "",
+    "owner_address": "",
+    "json_schema": "",
+    "contract_address": "",
+    "icon_url": "",
+    "collection_image_url": ""
 }
