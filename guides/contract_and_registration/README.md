@@ -62,7 +62,7 @@ The last test is optional based on your design choices. You may want to ignore b
 # Step 5 - Deploying your contract
 This repo comes with a couple of helper scripts, 3 of which are used for deployment of the contract.
 
-After a deployment has been successful, necessary details required by the [IMX Contract Registration Form](https://forms.gle/KKv5KNdBa4o4Bajq5) will be saved in a file called "REGISTRATION_DETAILS.json".
+After a deployment has been successful, necessary (contract-related) details required by the [IMX Contract Registration Form](https://forms.gle/6fknK9txc3JZmnV26) will be saved in a file called "REGISTRATION_DETAILS.json". Additional registration requirements and steps available [here](https://docs.x.immutable.com/docs/contract-registration).
 
 ## Local deployment
 This scripts does a test run deployment against the local hardhat details. Use this to validate REGISTRATION_DETAILS information.
