@@ -102,7 +102,7 @@ const main = async()=>{
                             // you can add multiple tokens (of the same type and from the same contract!)
                             {
                                 // ID of the token (received as the 2nd argument in mintFor), positive integer string
-                                "id": "292",
+                                "id": "1",
                                 // blueprint - can't be left empty, but if you're not going to take advantage
                                 // of on-chain metadata, just keep it to a minimum - in this case a single character
                                 // gets passed as the 3rd argument formed as {tokenId}:{blueprint (whatever you decide to put in it when calling this function)}
