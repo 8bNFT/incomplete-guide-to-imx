@@ -233,7 +233,7 @@ The basic JSON schema definition looks like
             },
             {
                 "name": "magical",
-                "type": boolean,
+                "type": "boolean",
                 "filterable": true
             },
             {
