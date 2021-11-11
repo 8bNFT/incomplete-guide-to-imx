@@ -18,6 +18,15 @@ To get a better understanding of the contract, read through it. Plenty of commen
 
 **Make sure you test the entire flow on the testnet, before going to the mainnet.** This includes minting, buying, selling, withdrawing and depositing of assets.
 
+# Important URLs and addresses
+
+| | Ropsten (Testnet) | Mainnet |
+|-|-|-|
+| Client Public API URL | https://api.ropsten.x.immutable.com/v1 | https://api.x.immutable.com/v1 |
+| Link API URL | https://link.ropsten.x.immutable.com | https://link.x.immutable.com |
+| Stark Contract Address (mintFor whitelist) | 0x4527BE8f31E2ebFbEF4fCADDb5a17447B27d2aef | 0x5FDCCA53617f4d2b9134B29090C87D01058e27e9 |
+| Registration Contract Address | 0x6C21EC8DE44AE44D0992ec3e2d9f1aBb6207D864 | 0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c |
+
 # Step 1 - Dependencies 
 After downloading, run the following using Terminal/Command Prompt (requires [NodeJS](https://nodejs.org/en/download/)):
 

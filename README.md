@@ -8,17 +8,26 @@ This guide is mostly a TLDR; as well as a repository for me to share my findings
 
 - [Immutable X (homepage)](https://www.immutable.com/)
 - [Official Documentation](https://docs.x.immutable.com/docs)
-	- [Quick Start Guide](https://docs.x.immutable.com/docs/quick-start-guide)
+	- [Getting Started Guide](https://docs.x.immutable.com/docs/getting-started)
 	- [Introduction to minting on Immutable X](https://docs.x.immutable.com/docs/partner-nft-minting-setup)
 	- [Minting on Immutable X](https://docs.x.immutable.com/docs/minting-assets-1)
-	- [Building a Marketplace](https://docs.x.immutable.com/docs/how-to-build-a-marketplace)
+	- [Building a Marketplace](https://docs.x.immutable.com/docs/building-a-marketplace-on-immutable-x-3)
 	- [FAQ](https://docs.x.immutable.com/docs/developer-faq)
-	- [Link SDK](https://docs.x.immutable.com/docs/link-wallet)
+	- [Link SDK](https://docs.x.immutable.com/docs/sdk-api)
 - [Official API reference](https://docs.x.immutable.com/reference)
 - [Immutable X' Github](https://github.com/immutable)
-	- [Integration Example](https://github.com/immutable/imx-integration-example)
+	- [Integration Example (Skeleton marketplace APP)](https://github.com/immutable/imx-integration-example)
 - [Immutable X Contracts (NPM)](https://www.npmjs.com/package/@imtbl/imx-contracts)
 - [Immutable X SDK (NPM)](https://www.npmjs.com/package/@imtbl/imx-sdk)
+
+# Important URLs and addresses
+
+| | Ropsten (Testnet) | Mainnet |
+|-|-|-|
+| Client Public API URL | https://api.ropsten.x.immutable.com/v1 | https://api.x.immutable.com/v1 |
+| Link API URL | https://link.ropsten.x.immutable.com | https://link.x.immutable.com |
+| Stark Contract Address (mintFor whitelist) | 0x4527BE8f31E2ebFbEF4fCADDb5a17447B27d2aef | 0x5FDCCA53617f4d2b9134B29090C87D01058e27e9 |
+| Registration Contract Address | 0x6C21EC8DE44AE44D0992ec3e2d9f1aBb6207D864 | 0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c |
 
 # Table of Contents
 To be added as I structure this guide. I am not in the right state of mind to write this rn.
@@ -144,15 +153,15 @@ https://example.com/bunny/ducks/123
 - https://example.com/bunny/ducks is the \<base_uri\>
 - 123 is still the \<tokenId\>
 
-Example #3 (IPFS) - Using IPFS is allowed, but you need to have an HTTP gateway for IMX to fetch files from (below example is using Cloudflare's IPFS gateway)
+Example #3 (IPFS) - Using IPFS is allowed, but you need to have an [HTTP gateway](https://docs.ipfs.io/how-to/address-ipfs-on-web/#http-gateways) for IMX to fetch files from (below example is using Cloudflare's IPFS gateway)
 http://cloudflare-ipfs.com/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF/123
 - http://cloudflare-ipfs.com/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF is the \<base_uri\>
 - QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF is your IPFS hash/cid
 - 123 is still the \<tokenId\>
+  
 
-(Note: You can still use IPFS to host your metadata, but you will need to provide an HTTP gateway URL, instead of a raw ipfs:// one)
 
-#### ALL contracts must first be registered with IMX before you're able to deposit or mint assets based on them (link to registration)
+#### ALL contracts must first be registered with IMX before you're able to deposit or mint assets based on them - [registartion form](https://docs.google.com/forms/d/e/1FAIpQLSdr6uSvdZs2uuIcW01ekQUAa1U77cj6KVMn0TJQ4GIrjnZjbQ/viewform).
 
 # Metadata
 
@@ -179,9 +188,9 @@ Example #1 (ERC721 OpenSea)
 	    "hair": "brown"
     }
 	    
-In the above example **attributes array will not be indexable or shown**.
-~~However, it is safe to assume Immutable X ignores extra properties, so redundancy *might be* the key.~~ (This is yet to be confirmed!)
-**IMX will be able to find out Creature #1's name, image_url, description and hair!**
+In the above example **attributes array will not be indexable, filterable or shown on the Immutable Marketplace**.
+However, IMX's crawler does pull in the information and makes it available as a part of metadata for 3rd party marketplaces and other users to take advantage of.
+**IMX will be able to index Creature #1's name, image_url, description and hair!**
 
 ### Available core properties
 *There are no required fields inside your metadata*
