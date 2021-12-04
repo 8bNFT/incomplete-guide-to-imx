@@ -45,7 +45,7 @@ const main = async()=>{
     // initializing IMX-SDK client
     const client = await ImmutableXClient.build({ 
         // IMX's API URL
-        publicApiUrl: 'https://api.uat.x.immutable.com/v1',
+        publicApiUrl: 'https://api.ropsten.x.immutable.com/v1',
         // signer (in this case, whoever owns the contract)
         signer,
         // IMX's Ropsten STARK contract address
