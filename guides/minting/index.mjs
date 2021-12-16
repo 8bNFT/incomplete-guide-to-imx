@@ -89,7 +89,7 @@ const main = async()=>{
                             data: {
                                 // address of the token's contract
                                 tokenAddress: process.env.TOKEN_CONTRACT_ADDRESS.toLowerCase(),
-                                // ID of the token (received as the 2nd argument in mintFor), positive integer string
+                                // ID of the token (received as a part of the 3rd argument {tokenId}:{blueprint} in mintFor), positive integer string
                                 id: '1',
                                 // blueprint - can't be left empty, but if you're not going to take advantage
                                 // of on-chain metadata, just keep it to a minimum - in this case a single character
