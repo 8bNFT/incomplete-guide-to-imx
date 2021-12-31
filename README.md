@@ -167,7 +167,7 @@ http://cloudflare-ipfs.com/ipfs/QmcCdVZwaxPLqex56e5xJcYtzqyQcpVUveWXq5ynQ2STMF/1
 
 ## Mutable metadata formatting / JSON schema
 
-**In order for an attribute to be shown, Immutable X requires it to be a top-level key:primitive_value pair. This means no objects.**
+**In order for an attribute to be shown/indexed, Immutable X requires it to be a top-level key:primitive_value pair. This means no objects.**
 
 Example #1 (ERC721 OpenSea)
 
@@ -189,8 +189,8 @@ Example #1 (ERC721 OpenSea)
     }
 	    
 In the above example **attributes array will not be indexable, filterable or shown on the Immutable Marketplace**.
-However, IMX's crawler does pull in the information and makes it available as a part of metadata for 3rd party marketplaces and other users to take advantage of.
-**IMX will be able to index Creature #1's name, image_url, description and hair!**
+However, **IMX's crawler does pull in the information and makes it available as a part of metadata** for 3rd party marketplaces and other users to take advantage of, so `attributes` property will be available in the IMX API. This means marketplaces can display more advanced structures other than the top level primitives if they choose to.
+**IMX will be able to index (for filtering/search purposes) Creature #1's name, image_url, description and hair**, while `attributes` will be stored, but can't be used for querying purposes.
 
 ### Available core properties
 *There are no required fields inside your metadata*
@@ -209,9 +209,12 @@ In order to index and allow for filtering of attributes, Immutable X requires a 
 The following five (5) types are allowed:
 - **text** (default) - arbitrary text, searchable, **cannot be filterable**
 - **enum** - property with a set of possible (end) values (think a list of values which can be the *only* thing matching this key, eg. sex: [male, female, other]). *The list of potential options will be automatically populated by the Immutable X crawler and is not to be provided in the JSON mapping*
-- **boolean** - true/false (think checkbox)
+- **boolean** - true/false (think checkbox/toggle)
 - **continuous** - property handled as a range (continous numeric value), (think height)
-- **discrete** - proprety which will be handled as a multi-select, (think mana, min-max range)
+- **discrete** - proprety which will be handled as a multi-select (think multiple checkboxes)
+
+**You do not need to add all of your metadata properties in the schema**, all attributes will still be fetched and shown on the marketplace regardless of the schema. 
+Its (current) purpose is giving the crawler hints on what properties to pay extra attention to and index them for filtering/query purposes.
 
 The basic JSON schema definition looks like
 
