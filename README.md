@@ -210,7 +210,6 @@ The following five (5) types are allowed:
 - **text** (default) - arbitrary text, searchable, **cannot be filterable**
 - **enum** - property with a set of possible (end) values (think a list of values which can be the *only* thing matching this key, eg. sex: [male, female, other]). *The list of potential options will be automatically populated by the Immutable X crawler and is not to be provided in the JSON mapping*
 - **boolean** - true/false (think checkbox/toggle)
-- **continuous** - property handled as a range (continous numeric value), (think height)
 - **discrete** - proprety which will be handled as a multi-select (think multiple checkboxes)
 
 **You do not need to add all of your metadata properties in the schema**, all attributes will still be fetched and shown on the marketplace regardless of the schema. 
