@@ -111,6 +111,29 @@ await link.deposit({
 })
 ```
 
+# Buy Crypto with Fiat (Moonpay)
+
+Immutable offers a Moonpay integration to allow direct fiat -> L2 crypto purchases.
+
+```javascript
+await link.fiatToCrypto({})
+```
+
+### Test cards and details (testnet-only!)
+
+```
+CARD: Visa
+NUMBER: 4000056655665556
+DATE: any date in the future
+CVC: 123
+```
+```
+CARD: Visa
+NUMBER: 4000020951595032
+DATE: 12/2022
+CVC: 123
+```
+
 # Initiate (prepare) a withdrawal
 
 Withdrawals are done in **2 parts**. You must first initiate withdrawal **preparation**, after which (once it's included in an L1 rollup) you are able to **complete** it.
@@ -251,6 +274,14 @@ If no amount or currencyAddress have been provided, Link will show inputs for bo
 await link.sell({
     tokenId: '1', // token ID of the ERC721 token
     tokenAddress: '0x4c...' // contract (collection) address of the ERC721 token
+})
+```
+
+# Cancel a sale order
+
+```javascript
+await link.cancel({
+    orderId: '1', // Order ID that you want to cancel
 })
 ```
 
