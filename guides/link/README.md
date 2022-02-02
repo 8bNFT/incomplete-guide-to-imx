@@ -98,6 +98,8 @@ await link.deposit({
 
 The ERC20 you're trying to deposit must be IMX-registered!
 
+To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.ropsten.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
+
 ```javascript
 import { ERC20TokenType } from '@imtbl/imx-sdk'
 
@@ -140,6 +142,8 @@ await link.prepareWithdrawal({
 ```
 
 ## ERC20
+
+To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.ropsten.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
 
 ```javascript
 import { ERC20TokenType } from '@imtbl/imx-sdk'
@@ -186,6 +190,8 @@ await link.completeWithdrawal({
 
 ## ERC20
 
+To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.ropsten.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
+
 ```javascript
 import { ERC20TokenType } from '@imtbl/imx-sdk'
 
@@ -194,4 +200,128 @@ await link.completeWithdrawal({
     tokenAddress: '0x82...', // ERC20's contract address
     symbol: 'GODS', // ERC20's symbol
 })
+```
+
+# Sell (create an order)
+
+## ETH
+
+```javascript
+await link.sell({
+    tokenId: '1', // token ID of the ERC721 token
+    tokenAddress: '0x4c...', // contract (collection) address of the ERC721 token
+    amount: '1.23' // ETH amount
+})
+```
+
+## ERC20
+
+To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.ropsten.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
+
+### With amount
+
+If all fields have been provided, user will only be prompted to confirm the sell order.
+
+```javascript
+await link.sell({
+    tokenId: '1', // token ID of the ERC721 token
+    tokenAddress: '0x4c...', // contract (collection) address of the ERC721 token
+    amount: '1.23', // amount of the selected ERC20 token to sell for
+    currencyAddress: '0x32...' // contract address of the ERC20 token
+})
+```
+
+### Without amount
+
+If no amount has been provided, user will be prompted to input the desired amount before confirming.
+
+```javascript
+await link.sell({
+    tokenId: '1', // token ID of the ERC721 token
+    tokenAddress: '0x4c...', // contract (collection) address of the ERC721 token
+    currencyAddress: '0x32...' // contract address of the ERC20 token
+})
+```
+
+## Any currency
+
+If no amount or currencyAddress have been provided, Link will show inputs for both the currency and the amount.
+
+```javascript
+await link.sell({
+    tokenId: '1', // token ID of the ERC721 token
+    tokenAddress: '0x4c...' // contract (collection) address of the ERC721 token
+})
+```
+
+# Buy (Fill an order)
+
+```javascript
+await link.buy({
+    orderIds: ['1', '2', '3'], // array of Order IDs to be filled
+})
+```
+
+# Transfer an asset
+
+Transfer method accepts an **array** of transfers. Don't forget to wrap your transfers in `[]`!
+
+## ETH
+
+```javascript
+import { ETHTokenType } from '@imtbl/imx-sdk'
+
+await link.transfer([
+        {
+            amount: '1.23', // 1.23 ETH
+            type: ETHTokenType.ETH,
+            toAddress: '0x82...' // receiver of this asset
+        },
+        // add more transfer objects if necessary, they don't have to be for the same asset type
+    ])
+```
+
+## ERC721
+
+```javascript
+import { ERC721TokenType } from '@imtbl/imx-sdk'
+
+await link.transfer([
+        {
+            type: ERC721TokenType.ERC721,
+            tokenId: '1', // ID of the ERC721 token you want to transfer
+            tokenAddress: '0x4c...', // contract (collection) address of the ERC721 token
+            toAddress: '0x82...' // receiver of this asset
+        },
+        // add more transfer objects if necessary, they don't have to be for the same asset type
+    ])
+```
+
+## ERC20
+
+To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.ropsten.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
+
+```javascript
+import { ERC20TokenType } from '@imtbl/imx-sdk'
+
+await link.transfer([
+        {
+            amount: '1.23', // 1.23 GODS
+            symbol: 'GODS', // ERC20 Symbol
+            type: ERC20TokenType.ERC20,
+            tokenAddress: '0x4c...', // contract address of ERC20 token
+            toAddress: '0x82...', // receiver of this asset
+        },
+        // add more transfer objects if necessary, they don't have to be for the same asset type
+    ])
+```
+
+# Transaction history
+
+Link offers a popup with a summary of all trades done with the currently logged in user involved.
+
+This includes trades, purchases, sales, deposits and withdrawals.
+
+```javascript
+await link.history({})
 ```
