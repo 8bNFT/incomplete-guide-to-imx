@@ -1,0 +1,17 @@
+{
+  "name": "imx-js-minter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "minter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ethersproject/keccak256": "^5.5.0",
+    "@ethersproject/strings": "^5.5.0",
+    "ethers": "^5.5.4",
+    "node-fetch": "^2.6.7"
+  }
+}
