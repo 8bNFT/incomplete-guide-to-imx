@@ -53,4 +53,5 @@ This is an example payload for `minter.mint`
             ]
         }
     ]
-}```
+}
+```
