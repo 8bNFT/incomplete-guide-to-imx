@@ -1,4 +1,7 @@
-## THIS GUIDE ASSUMES YOU HAVE A REGISTERED CONTRACT ON IMX
+**⚠ This guide assumes you have a registered contract on Immutable X ⚠**
+
+_Check out `contract_and_registration` part of this repo or go to [Project Onboarding](https://docs.x.immutable.com/docs/onboarding) docs_
+
 
 # Important URLs and addresses
 
@@ -9,7 +12,7 @@
 | Stark Contract Address (mintFor whitelist) | 0x4527BE8f31E2ebFbEF4fCADDb5a17447B27d2aef | 0x5FDCCA53617f4d2b9134B29090C87D01058e27e9 |
 | Registration Contract Address | 0x6C21EC8DE44AE44D0992ec3e2d9f1aBb6207D864 | 0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c |
 
-# Minting guide - WIP
+# Minting guide
 
 This serves as a basic example of minting on IMX using Node.js. 
 
