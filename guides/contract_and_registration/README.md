@@ -1,22 +1,5 @@
-# ⚠ Disclaimer - mintFor method signature ⚠
-There were some uncertainties when it comes to the mintFor method defined by the IMintable. Official documentation and implementation were different. I have followed official documentation, which has been out of date at the time of writing the initial version of this contract.
-
-**Changes (20/10/2021 - DD/MM/YYYY)**
-
-Correct function signature for mintFor is **(address to, uint256 quantity, bytes calldata mintingBlob)** as opposed to *(address to, uint256 id, bytes calldata blueprint)*.
-
-This change has been implemented after confirming the correct function signature with IMX devs, and all of my resources have been updated as well - which includes documentation, code and tests. 
-
-If you've used the previous version of this contract or have done the implementation based n the (to, id, blueprint) signature, you will experience issues when withdrawing to the L1.
-
-Quantity is always supposed to be 1 when it comes to ERC721. The same method will be used for ERC20s when the official support is released.
-
-### DOCUMENTATION TO BE DONE! WORK IN PROGRESS
-To get a better understanding of the contract, read through it. Plenty of comments in there.
-
-**None of the code has been verified or endorsed by members of the IMX team**
-
-**Make sure you test the entire flow on the testnet, before going to the mainnet.** This includes minting, buying, selling, withdrawing and depositing of assets.
+**⚠ Make sure you test the entire flow on the testnet, before going to the mainnet. ⚠**
+This includes minting, buying, selling, withdrawing and depositing of assets.
 
 # Important URLs and addresses
 
@@ -32,7 +15,7 @@ After downloading, run the following using Terminal/Command Prompt (requires [No
 
 	npm i
 
-  This script will install all the necessary dependencies that will let you test, compile and deploy your contract!
+This script will install all the necessary dependencies that will let you test, compile and deploy your contract!
   
 
 # Step 2 - .env variables
@@ -42,16 +25,15 @@ Replace them with the following:
 - **DEPLOYER_PRIVATE_KEY** - Private key of the wallet you want to be the owner and deployer of this contract
 - **CONTRACT_NAME** - Name of your token (collection), eg. BoredApeYachtClub
 - **CONTRACT_SYMBOL** - Your tokens symbol, eg. BAYC
-- **ALCHEMY_API_KEY** (optional) - .env comes with a default Alchemy API key, however [getting your own](https://auth.alchemyapi.io/signup) is recommended in order to avoid performance issues and error
+- **ALCHEMY_API_KEY** (optional) - .env comes with a default Alchemy API key, however [getting your own](https://auth.alchemyapi.io/signup) is recommended in order to avoid performance issues and error (esp. in production)
  
 
-# Step 3 - Editing the contract (WIP)
+# Step 3 - Editing the contract
 
 This contract is an opinionated bare-minimum implementation of an IMX-compatible smart contract. It comes with certain design choices which can be modified.
 
-In order to better understand the contract, read through the comments, until further documentation is provided.
+In order to better understand the contract, read through the comments.
 
-### To be done
 
 # Step 4 - Running tests
 
@@ -68,10 +50,11 @@ This runs the following checks on a local hardhat instance:
   
 The last test is optional based on your design choices. You may want to ignore blueprint parsing altogether in order to save up bytes - or choose a different type of an "invalid" format depending on the amount of arguments expected.
   
+
 # Step 5 - Deploying your contract
 This repo comes with a couple of helper scripts, 3 of which are used for deployment of the contract.
 
-After a deployment has been successful, necessary (contract-related) details required by the [IMX Contract Registration Form](https://forms.gle/6fknK9txc3JZmnV26) will be saved in a file called "REGISTRATION_DETAILS.json". Additional registration requirements and steps available [here](https://docs.x.immutable.com/docs/contract-registration).
+After a deployment has been successful, contract-related details will be saved in a file called "REGISTRATION_DETAILS.json". Additional registration requirements and steps available are available as a part of the [Project Onboarding documentation](https://docs.x.immutable.com/docs/onboarding) and [Contract Registration](https://docs.x.immutable.com/docs/contract-registration).
 
 ## Local deployment
 This scripts does a test run deployment against the local hardhat details. Use this to validate REGISTRATION_DETAILS information.
@@ -81,24 +64,26 @@ This scripts does a test run deployment against the local hardhat details. Use t
 ## Testnet (Ropsten) deployment
 
 ### Testnet (Ropsten) ETH faucet
-In order to deploy this contract to a testnet, you account will require some "testnet" ETH in order to pay for gas fees.
+In order to deploy this contract to a testnet, your account will require some "testnet" ETH in order to pay for gas fees.
 
-Use the [Ropsten Faucet](https://faucet.ropsten.be/) in order to get 0.3 ETH to your testnet wallet's balance. (This is more than enough for testing as gas fees are low).
+Use the [IMXFaucet](https://imxfaucet.xyz/) (_by yours truly_) or the [Ropsten Faucet](https://faucet.ropsten.be/) in order to get ETH to your testnet wallet's balance. (This is more than enough for testing as gas fees are low).
 
 This script deploys your contract to the testnet used by IMX (Ropsten). Use this when testing your contract because you don't want to be paying deployment costs for every mistake made.
 
 	npm run deploy:testnet
 
 
-## Mainnet deployment (Real money!)
+## Mainnet deployment (⚠ Real money ⚠)
 This script does the same as the above, but uses the mainnet and your wallet's mainnet balance. **This means real money**.
 Use this when absolutely sure about what you're doing.
 
 	npm run deploy:mainnet
 
-# Step 6 - Metadata JSON (To be done)
 
-# Step 7 - Contract registration (To be done)
+# Step 6 - Project onboarding
+
+For detailed onboarding instruction check out [Project Onboarding documentation](https://docs.x.immutable.com/docs/onboarding).
+
 
 # Replicating L1 minting dapp experience
 This has been the burning topic ever since the launch of IMX. I will try to summarize some of the ideas currently circulating.
@@ -107,7 +92,7 @@ There is no "right" way of doing this. I will not provide code examples, at leas
 
 The main difference between L1 and L2 minting is the fact that all mint requests for L2 must be passed through a backend, done via the REST API and signed by the owner of the contract.
 
-Another major difference is the fact that **tokenId** must be known before minting it, which means you are in charge of incrementing/randomizing and have to keep track of it yourself.
+Another major difference is the fact that `tokenId` must be known before minting it, which means you are in charge of incrementing/randomizing and have to keep track of it yourself.
 
 **These are not "correct" ways of doing this, but are some of the ideas discussed within the community**
 
@@ -215,4 +200,4 @@ Make sure your choice of technologies is appropriate for the scale, which includ
 
 Also your hardware must match the demand, which is most often best done by having "auto scaling". This can either be a service provided by your cloud/hosting company or done with orchestration instruments (such as K8s).
 
-Proper caching is a **must**, which includes memory caching (eg. Redis), database/permanent data storage as well as using a CDN.
+Proper caching is a **must**, which includes in-memory caching (eg. Redis), database/permanent data storage as well as using a CDN.

@@ -51,7 +51,7 @@ That's it. The scary part is basically over. Watch as the Matrix unfold and scri
 In order for the script to execute successfully, you have to modify the .env file present in the folder.
 
 - **MINTER_PRIVATE_KEY** - Private key of the wallet that deployed the contract whose tokens you're trying to mint. [MetaMask tutorial](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key)
--  **ALCHEMY_API_KEY** - modifying this is value is optional, but recommended. [Alchemy Sign-up](https://auth.alchemyapi.io/signup)
+-  **ALCHEMY_API_KEY** - modifying this is value is optional, but recommended (requirement for production projects). [Alchemy Sign-up](https://auth.alchemyapi.io/signup)
 -  **TOKEN_CONTRACT_ADDRESS** - address of the L1 deployed contract on Ropsten (the one you registered on IMX)
 - **TOKEN_RECEIVER_ADDRESS** - wallet you want to mint the token to - needs to be registered on IMX!
 - **ROYALTY_RECEIVER_ADDRESS** - default royalty recipient in mintv2
@@ -66,8 +66,8 @@ The only values you **need** to change inside the code (in order for this to wor
 ## 5 - Running the script
 After you've edited the tokenId and blueprint in the files `index.mjs` and `index.v2.mjs` respectively, you're ready to run the script and mint away!
 
-### mintv1
-Mint(v1) is a function that is going to be replaced by mintv2 in the near future. 
+### mintv1 | DEPRECATED 
+Mint(v1) is a function that got replaced by mintv2. 
 It's focus is **minting multiple types of tokens to a single user** and doesn't allow for royalties to be added.
 
 In order to run the mint(v1) script, open up your trusty terminal/command prompt and run the following
@@ -78,9 +78,7 @@ If there were any errors, they will be descriptive and shown in the terminal.
 
 ### mintv2
 
-Mintv2 is a replacement for mintv1 that's supposed to be taking its place in the near future. It focuses on minting **a single token type to multiple users**. I do find this approach to make much more sense, considering this scenario is much more likely (think - literally every NFT drop ever). Mintv2 also adds the ability to add protocol-level royalties and even define them on **token by token** basis.
-
-Projects that minted with mintv1 **will be able to additionally add royalties** to their assets. Process is TBA (to be announced).
+Mintv2 is a replacement for mintv1. It focuses on minting **a single token type to multiple users**. I do find this approach to make much more sense, considering this scenario is much more likely (think - literally every NFT drop ever). Mintv2 also adds the ability to add protocol-level royalties and even define them on **token by token** basis.
 
 If you want to run the mintv2 script, just enter the following in your terminal/command prompt
 
@@ -94,4 +92,4 @@ This is a bare minimum example, but it could easily be turned into a batch mint 
 
 Also, the script **doesn't query** the transaction_id or the token_id, so you're left with a pretty *naked* result in your console. It's not life changing, but I'm sure it would be nicer if you had some pretty JSON in your console describing your beautiful (newly-minted!) assets.
 
-**This is the initial commit. Errors are a real possibility. If you run into any, feel free to share in IMX's Discord (#developers!)**
+**This is the initial commit. Errors are a real possibility. If you run into any, feel free to share in IMX's Discord (#developers-discussion)**
