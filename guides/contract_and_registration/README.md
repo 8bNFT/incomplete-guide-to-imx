@@ -97,19 +97,6 @@ Another major difference is the fact that `tokenId` must be known before minting
 
 **These are not "correct" ways of doing this, but are some of the ideas discussed within the community**
 
-## Pure L1
-Since L2 allows depositing of already minted L1 assets, the simple integration would be to keep everything on L1 and only register your contract with IMX for deposit purposes.
-
-Pros
-- easiest to implement (no changes necessary)
-- logic is kept inside the smart contract
-- no additional backend required
-
-Cons
-- gas-inefficient
-- slower/worse UX
-- double gas costs (minting + depositing of the assets)
-
 ## L1 + L2
 Since payments are the "trickiest" thing to implement in a transparent and scalable way (at least in the usual L1 minting dapp manner), one might use L1 as the "payment processor" and mint the assets on L2.
 
