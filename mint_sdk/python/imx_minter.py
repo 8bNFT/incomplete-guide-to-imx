@@ -58,10 +58,8 @@ class Minter:
         start = signature[:-2]
         end = signature[len(signature) - 2:]
         parsed_end = int(end, 16)
-        if parsed_end < 27:
-            end = str(hex(parsed_end))[2:].rjust(2, "0")
-        else:
-            end = str(hex(parsed_end - 27))[2:].rjust(2, "0")
+        if parsed_end > 1:
+            end = "0" + str(1 - parsed_end % 2)
 
         return start + end
 

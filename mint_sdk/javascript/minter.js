@@ -6,7 +6,7 @@ function fixEthSignature(sig){
     let start = sig.slice(0, sig.length - 2)
     let end = sig.slice(sig.length - 2)
     let parsed_end = parseInt(end, 16)
-    if(parsed_end >= 27) end = (parsed_end - 27).toString(16).padStart(2, '0')
+    if(parsed_end > 1) end = `0${(1 - (parsed_end % 2))}`
     return start + end
 }
 
