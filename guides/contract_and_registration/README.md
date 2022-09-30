@@ -4,12 +4,12 @@ This includes minting, buying, selling, withdrawing and depositing of assets.
 
 # Important URLs and addresses
 
-| | Ropsten (Testnet) | Mainnet |
+| | Sandbox (Goerli) | Mainnet |
 |-|-|-|
-| Client Public API URL | https://api.ropsten.x.immutable.com/v1 | https://api.x.immutable.com/v1 |
-| Link API URL | https://link.ropsten.x.immutable.com | https://link.x.immutable.com |
-| Stark Contract Address (mintFor whitelist) | 0x4527BE8f31E2ebFbEF4fCADDb5a17447B27d2aef | 0x5FDCCA53617f4d2b9134B29090C87D01058e27e9 |
-| Registration Contract Address | 0x6C21EC8DE44AE44D0992ec3e2d9f1aBb6207D864 | 0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c |
+| Client Public API URL | https://api.sandbox.x.immutable.com | https://api.x.immutable.com |
+| Link API URL | https://link.sandbox.x.immutable.com | https://link.x.immutable.com |
+| Stark Contract Address (mintFor whitelist) | 0x7917eDb51ecD6CdB3F9854c3cc593F33de10c623 | 0x5FDCCA53617f4d2b9134B29090C87D01058e27e9 |
+| Registration Contract Address | 0x1C97Ada273C9A52253f463042f29117090Cd7D83 | 0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c |
 
 # Step 1 - Dependencies 
 After downloading, run the following using Terminal/Command Prompt (requires [NodeJS](https://nodejs.org/en/download/)):
@@ -62,14 +62,14 @@ This scripts does a test run deployment against the local hardhat details. Use t
 
 	npm run deploy:local
 
-## Testnet (Ropsten) deployment
+## Testnet (Sandbox) deployment
 
-### Testnet (Ropsten) ETH faucet
+### Testnet (Goerli) ETH faucet
 In order to deploy this contract to a testnet, your account will require some "testnet" ETH in order to pay for gas fees.
 
-Use the [IMXFaucet](https://imxfaucet.xyz/) (_by yours truly_) or the [Ropsten Faucet](https://faucet.ropsten.be/) in order to get ETH to your testnet wallet's balance. (This is more than enough for testing as gas fees are low).
+Use [Goerli Faucet](https://goerlifaucet.com/) (Alchemy account required) or [Goerli POW Faucet](https://goerli-faucet.pk910.de/) in order to get ETH to your testnet wallet's balance. (This is more than enough for testing as gas fees are low).
 
-This script deploys your contract to the testnet used by IMX (Ropsten). Use this when testing your contract because you don't want to be paying deployment costs for every mistake made.
+This script deploys your contract to the testnet used by IMX (Goerli). Use this when testing your contract because you don't want to be paying deployment costs for every mistake made.
 
 	npm run deploy:testnet
 

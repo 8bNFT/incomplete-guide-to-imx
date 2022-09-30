@@ -11,7 +11,7 @@ function fixEthSignature(sig){
 }
 
 class IMXMinter{
-    constructor({signer, apiUrl = 'https://api.ropsten.x.immutable.com'}){
+    constructor({signer, apiUrl = 'https://api.sandbox.x.immutable.com'}){
         this.signer = signer
         this.api = apiUrl
     }

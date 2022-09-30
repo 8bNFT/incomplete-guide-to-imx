@@ -24,7 +24,7 @@ for(let [k, v] of Object.entries(process.env)){
 }
 
 // setting up the provider
-const provider = new AlchemyProvider('ropsten', process.env.ALCHEMY_API_KEY);
+const provider = new AlchemyProvider('goerli', process.env.ALCHEMY_API_KEY);
 
 // this function blocks until the transaction is either mined or rejected
 const waitForTransaction = async (promise) => {
@@ -45,13 +45,13 @@ const main = async()=>{
     // initializing IMX-SDK client
     const client = await ImmutableXClient.build({ 
         // IMX's API URL
-        publicApiUrl: 'https://api.ropsten.x.immutable.com/v1',
+        publicApiUrl: 'https://api.sandbox.x.immutable.com/v1',
         // signer (in this case, whoever owns the contract)
         signer,
-        // IMX's Ropsten STARK contract address
-        starkContractAddress: '0x4527BE8f31E2ebFbEF4fCADDb5a17447B27d2aef',
-        // IMX's Ropsten Registration contract address
-        registrationContractAddress: '0x6C21EC8DE44AE44D0992ec3e2d9f1aBb6207D864'
+        // IMX's Goerli STARK contract address
+        starkContractAddress: '0x7917eDb51ecD6CdB3F9854c3cc593F33de10c623',
+        // IMX's Goerli Registration contract address
+        registrationContractAddress: '0x1C97Ada273C9A52253f463042f29117090Cd7D83'
     });
 
     // Registering the user (owner of the contract) with IMX

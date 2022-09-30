@@ -72,7 +72,7 @@ async function getPublicKey(signer){
  * 
  * @param {string} name - Friendly name for the contract
  * @param {string} symbol - Symbol for the contract (e.g. 'GODS')
- * @param {string} network - ropsten or mainnet
+ * @param {string} network - testnet or mainnet
  */
 async function deploySmartContract(name, symbol, network) {
     // Hard coded to compile and deploy the Asset.sol smart contract.
@@ -86,18 +86,18 @@ async function deploySmartContract(name, symbol, network) {
 
 /**
  * Returns the IMX address for either network. DO NOT CHANGE these values.
- * @param {string} network - ropsten or mainnent
+ * @param {string} network - testnet or mainnent
  * @returns {string} IMX address
  */
 function getIMXAddress(network) {
     switch (network) {
-        case 'ropsten':
-            return '0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef';
+        case 'testnet':
+            return '0x7917eDb51ecD6CdB3F9854c3cc593F33de10c623';
         case 'mainnet':
             return '0x5FDCCA53617f4d2b9134B29090C87D01058e27e9';
         case 'hardhat':
             // dummy address so the contract doesn't error out
-            return '0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef';
+            return '0x7917eDb51ecD6CdB3F9854c3cc593F33de10c623';
     }
     throw Error('Invalid network selected');
 }

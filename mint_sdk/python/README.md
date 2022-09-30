@@ -115,7 +115,7 @@ result = minter.mint(payload)
 ```python
 from imx_minter import Minter
 
-## Will use api.ropsten.x.immutable.com/v2 because of the "testnet" param
+## Will use api.sandbox.x.immutable.com/v2 because of the "testnet" param
 minter = Minter("PRIVATE_KEY_HERE", "testnet")
 
 result = minter.mint({

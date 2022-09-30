@@ -22,7 +22,7 @@ Before running any link methods, you first have to initialize the client.
 
 The syntax is simple and all other sections in this doc will assume you've already done this.
 
-The only parameter is the Link API URL which is either `https://link.ropsten.x.immutable.com` for **mainnet** or `https://link.ropsten.x.immutable.com` for **testnet**.
+The only parameter is the Link API URL which is either `https://link.sandbox.x.immutable.com` for **mainnet** or `https://link.sandbox.x.immutable.com` for **testnet**.
 
 ## Syntax
 
@@ -32,12 +32,12 @@ import { Link } from '@imtbl/imx-sdk';
 const link = new Link(<LINK_API_ADDRESS_HERE>)
 ```
 
-### Connecting to Ropsten (testnet)
+### Connecting to Sandbox (Goerli testnet)
 
 ```javascript
 import { Link } from '@imtbl/imx-sdk';
 
-const link = new Link('https://link.ropsten.x.immutable.com')
+const link = new Link('https://link.sandbox.x.immutable.com')
 ```
 
 ### Connecting to Mainnet
@@ -98,7 +98,7 @@ await link.deposit({
 
 The ERC20 you're trying to deposit must be IMX-registered!
 
-To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.ropsten.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
+To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.sandbox.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
 
 ```javascript
 import { ERC20TokenType } from '@imtbl/imx-sdk'
@@ -166,7 +166,7 @@ await link.prepareWithdrawal({
 
 ## ERC20
 
-To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.ropsten.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
+To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.sandbox.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
 
 ```javascript
 import { ERC20TokenType } from '@imtbl/imx-sdk'
@@ -213,7 +213,7 @@ await link.completeWithdrawal({
 
 ## ERC20
 
-To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.ropsten.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
+To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.sandbox.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
 
 ```javascript
 import { ERC20TokenType } from '@imtbl/imx-sdk'
@@ -239,7 +239,7 @@ await link.sell({
 
 ## ERC20
 
-To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.ropsten.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
+To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.sandbox.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
 
 ### With amount
 
@@ -330,7 +330,7 @@ await link.transfer([
 
 ## ERC20
 
-To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.ropsten.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
+To find a list of IMX registered ERC20 tokens check out the `/tokens` API endpoint ([testnet](https://api.sandbox.x.immutable.com/v1/tokens), [mainnet](https://api.x.immutable.com/v1/tokens)).
 
 ```javascript
 import { ERC20TokenType } from '@imtbl/imx-sdk'

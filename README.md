@@ -21,12 +21,12 @@ This guide is mostly a TLDR; as well as a repository for me to share my findings
 
 # Important URLs and addresses
 
-| | Ropsten (Testnet) | Mainnet |
+| | Sandbox (Goerli) | Mainnet |
 |-|-|-|
-| Client Public API URL | https://api.ropsten.x.immutable.com/v1 | https://api.x.immutable.com/v1 |
-| Link API URL | https://link.ropsten.x.immutable.com | https://link.x.immutable.com |
-| Stark Contract Address (mintFor whitelist) | 0x4527BE8f31E2ebFbEF4fCADDb5a17447B27d2aef | 0x5FDCCA53617f4d2b9134B29090C87D01058e27e9 |
-| Registration Contract Address | 0x6C21EC8DE44AE44D0992ec3e2d9f1aBb6207D864 | 0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c |
+| Client Public API URL | https://api.sandbox.x.immutable.com | https://api.x.immutable.com |
+| Link API URL | https://link.sandbox.x.immutable.com | https://link.x.immutable.com |
+| Stark Contract Address (mintFor whitelist) | 0x7917eDb51ecD6CdB3F9854c3cc593F33de10c623 | 0x5FDCCA53617f4d2b9134B29090C87D01058e27e9 |
+| Registration Contract Address | 0x1C97Ada273C9A52253f463042f29117090Cd7D83 | 0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c |
 
 
 # Basic concepts

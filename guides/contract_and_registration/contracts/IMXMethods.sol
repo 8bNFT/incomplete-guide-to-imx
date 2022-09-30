@@ -15,7 +15,7 @@ import "./utils/Parsing.sol";
 // Inheriting from IMintable (mintFor) and Ownable (owner method)
 abstract contract IMXMethods is Ownable, IMintable {
     // address of the IMX's L1 contract that needs to be whitelisted
-    // 0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef - Ropsten
+    // 0x7917eDb51ecD6CdB3F9854c3cc593F33de10c623 - Testnet (Sandbox/Goerli)
     // 0x5FDCCA53617f4d2b9134B29090C87D01058e27e9 - Mainnet
     // gets passed in the constructor on deployment of the contract
     address public imx;

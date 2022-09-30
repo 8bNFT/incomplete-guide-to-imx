@@ -7,7 +7,7 @@ import json, copy
 import requests
 
 class Minter:
-    def __init__(self, private_key, network = "ropsten"):
+    def __init__(self, private_key, network = "testnet"):
         self.private_key = private_key
         self.network = network
         self.account = Account.from_key(self.private_key)
@@ -95,7 +95,7 @@ class Minter:
         parsed_payload = self.generateMintPayload(payload)
 
         res = requests.post(
-            f'https://api{".ropsten" if self.network.lower() == "testnet" else ""}.x.immutable.com/v2/mints',
+            f'https://api{".sandbox" if self.network.lower() == "testnet" else ""}.x.immutable.com/v2/mints',
             headers={"Content-Type": "application/json"},
             json=[parsed_payload]
         )

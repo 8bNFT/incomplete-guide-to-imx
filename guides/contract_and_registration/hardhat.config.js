@@ -10,8 +10,8 @@ dotenv.config();
 module.exports = {
   solidity: "0.8.4",
   networks: {
-    ropsten: {
-      url: `https://eth-ropsten.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
+    testnet: {
+      url: `https://eth-goerli.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
       accounts: [`0x${process.env.DEPLOYER_PRIVATE_KEY}`],
     },
     mainnet: {

@@ -15,7 +15,7 @@ This will install all the required dependencies.
 ## Constructor arguments
 
 - `signer` - eth signer
-- `apiUrl` (*optional*) - `https://api.ropsten.x.immutable.com` for **testnet**, `https://api.x.immutable.com` for **mainnet** (default: *testnet*)
+- `apiUrl` (*optional*) - `https://api.sandbox.x.immutable.com` for **testnet**, `https://api.x.immutable.com` for **mainnet** (default: *testnet*)
 
 ## Methods
 
